@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Configuración local con credenciales
+.env
+.env.*
+!.env.example
