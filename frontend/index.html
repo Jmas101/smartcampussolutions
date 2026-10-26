@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartCampus | Aulas y reservas</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <p class="eyebrow">SMARTCAMPUS SOLUTIONS</p>
+      <h1>Tu campus, organizado.</h1>
+      <p>Consulta los espacios disponibles y gestiona sus reservas.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="toolbar" aria-label="Estado y actualización">
+      <p id="status" role="status" aria-live="polite">
+        Conectando con la API…
+      </p>
+      <button id="refresh-button" type="button">
+        Actualizar datos
+      </button>
+    </section>
+
+    <section aria-labelledby="rooms-title">
+      <div class="section-heading">
+        <h2 id="rooms-title">Aulas del campus</h2>
+        <span id="rooms-count" class="badge">0 aulas</span>
+      </div>
+
+      <div id="rooms-list" class="rooms-grid"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="create-booking-title">
+      <h2 id="create-booking-title">Nueva reserva</h2>
+
+      <form id="booking-form" class="booking-form">
+        <div class="field">
+          <label for="aula_id">Aula</label>
+          <select id="aula_id" name="aula_id" required>
+            <option value="">Selecciona un aula</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="usuario">Nombre del usuario</label>
+          <input
+            id="usuario"
+            name="usuario"
+            type="text"
+            maxlength="120"
+            autocomplete="name"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="fecha">Fecha</label>
+          <input id="fecha" name="fecha" type="date" required>
+        </div>
+
+        <div class="field">
+          <label for="hora_inicio">Hora de inicio</label>
+          <input
+            id="hora_inicio"
+            name="hora_inicio"
+            type="time"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="hora_fin">Hora de fin</label>
+          <input
+            id="hora_fin"
+            name="hora_fin"
+            type="time"
+            required
+          >
+        </div>
+
+        <div class="form-actions">
+          <button id="submit-button" type="submit">
+            Crear reserva
+          </button>
+        </div>
+      </form>
+
+      <p id="form-message" role="status" aria-live="polite"></p>
+      <p class="muted">
+        Prototipo académico: no comprueba solapamientos entre reservas.
+      </p>
+    </section>
+
+    <section class="panel" aria-labelledby="bookings-title">
+      <div class="section-heading">
+        <h2 id="bookings-title">Reservas</h2>
+        <span id="bookings-count" class="badge">0 reservas</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <caption class="sr-only">
+            Reservas de aulas universitarias
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Aula</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Horario</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="bookings-list"></tbody>
+        </table>
+      </div>
+
+      <p id="bookings-empty" class="muted" hidden>
+        No hay reservas registradas.
+      </p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>SmartCampus Solutions · Práctica de Docker y Kubernetes</p>
+  </footer>
+</body>
+</html>
