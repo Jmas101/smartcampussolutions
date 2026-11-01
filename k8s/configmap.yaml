@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: smartcampus-config
+  namespace: smartcampus
+data:
+  DB_HOST: database-service
+  DB_PORT: "5432"
+  DB_NAME: smartcampus
+  APP_ENV: kubernetes-pruebas
+  BACKEND_URL: http://backend-service:8000
